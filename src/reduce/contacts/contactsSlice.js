@@ -23,7 +23,7 @@ const contactSlise = createSlice({
           state.isLoading = false;
          state.error = null;
           const index = state.contacts.findIndex(
-            task => task.id === action.payload.id)
+            contact => contact.id === action.payload.id)
          state.contacts.splice(index, 1);
       })
       .addMatcher(isAnyOf(fetchContacts.pending, addCont.pending, deleteCont.pending), state => {

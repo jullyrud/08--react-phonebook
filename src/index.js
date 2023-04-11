@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from "react-router-dom";
 import { App } from 'components/App';
 import { Provider } from "react-redux";
-import { store } from "./components/reduce/store";
+import { store } from "./reduce/store";
 import './index.css';
  
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-     
-        <App />  
 
+    <BrowserRouter basename="/08-react-phonebook">
+      <App />
+    </BrowserRouter>
+      
     </Provider>
   </React.StrictMode>
 );

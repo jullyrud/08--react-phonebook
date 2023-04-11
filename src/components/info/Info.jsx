@@ -1,6 +1,6 @@
 import { ContactList, ContactItem, DelButton } from './Info.styled'
 import { useSelector } from 'react-redux'
-import { selectContacts } from 'components/reduce/selectors'
+import { selectContacts } from 'reduce/contacts/selectors'
 
 export function Info ({ contacts ,deleteContactFunct }  ) {
    

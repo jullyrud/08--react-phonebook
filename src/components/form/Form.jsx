@@ -2,9 +2,9 @@
 import { AddForm, Input, Label, Button } from './Form.styled'
 
 import { useDispatch } from "react-redux"
-import { addCont } from '../reduce/operations';
+import { addCont } from '../../reduce/contacts/operations';
 import { useSelector } from 'react-redux';
-import { selectContacts } from 'components/reduce/selectors';
+import { selectContacts } from 'reduce/contacts/selectors';
 
 export function Form() {
   const {contacts, isLoading } = useSelector(selectContacts)

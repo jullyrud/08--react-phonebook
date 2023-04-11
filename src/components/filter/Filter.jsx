@@ -1,4 +1,4 @@
-import { setFilter } from '../reduce/filtersSlice'
+import { setFilter } from '../../reduce/filtersSlice'
 import { useDispatch } from "react-redux"
 
 
