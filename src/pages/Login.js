@@ -1,16 +1,20 @@
 
 import { AddForm, Input, Label, Button } from '../components/form/Form.styled'
+import { useDispatch } from "react-redux"
+import { login } from 'reduce/auth/authOperations'
 
 
 export const Login = () => {
+  const dispatch = useDispatch()
 
   const onHandkeSubmit = (evt) => {
     evt.preventDefault()
-    const name = evt.target.name.value
+
     const email = evt.target.email.value
     const password = evt.target.password.value
 
-    console.log({name, email, password});
+    dispatch(login({ email, password }))
+
     evt.target.reset()
   }
 
@@ -38,7 +42,7 @@ export const Login = () => {
           required
           id="password"
         />
-        <Button  type="submit">Register</Button>
+        <Button  type="submit">Login</Button>
       </AddForm>
         </>
        
