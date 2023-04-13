@@ -44,7 +44,7 @@ export const Register = () => {
           
         <Label htmlFor="password">Password</Label>
         <Input
-          type="text"
+          type="password"
           name="password"
           pattern="^(?=.*\d)(?=.*[a-zA-Zа-яА-Я])[a-zA-Zа-яА-Я\d]{6,}$"
           title="Phone password must consist of at least 6 characters, one of which must be a number and the rest must be Latin or Cyrillic"
