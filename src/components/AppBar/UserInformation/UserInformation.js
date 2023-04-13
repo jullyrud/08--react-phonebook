@@ -13,7 +13,7 @@ export const UserInformation = () => {
 }
     return (
         <UserInformationWrap>
-            <Name>hello, {name}</Name>
+            <Name>Hello, {name}</Name>
             <button onClick={onHandleClick}>Logout</button>
         </UserInformationWrap>
     )

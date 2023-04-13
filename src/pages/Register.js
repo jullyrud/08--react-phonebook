@@ -1,5 +1,6 @@
 
 import { AddForm, Input, Label, Button } from '../components/form/Form.styled'
+import { Wrap } from '../components/App.styled'
 import { register } from 'reduce/auth/authOperations'
 import { useDispatch } from "react-redux"
 
@@ -18,7 +19,7 @@ export const Register = () => {
   }
 
     return (
-        <>
+        <Wrap>
         <h2>REGISTRATION</h2>
          <AddForm onSubmit={onHandkeSubmit}>
         <Label htmlFor="name">Name</Label>
@@ -52,7 +53,7 @@ export const Register = () => {
         />
         <Button  type="submit">Register</Button>
       </AddForm>
-        </>
+        </Wrap>
        
        
         

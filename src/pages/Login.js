@@ -2,6 +2,7 @@
 import { AddForm, Input, Label, Button } from '../components/form/Form.styled'
 import { useDispatch } from "react-redux"
 import { login } from 'reduce/auth/authOperations'
+import { Wrap } from '../components/App.styled'
 
 
 export const Login = () => {
@@ -19,7 +20,7 @@ export const Login = () => {
   }
 
     return (
-        <>
+        <Wrap>
         <h2>Login</h2>
          <AddForm onSubmit={onHandkeSubmit}>
             
@@ -44,7 +45,7 @@ export const Login = () => {
         />
         <Button  type="submit">Login</Button>
       </AddForm>
-        </>
+        </Wrap>
        
        
         

@@ -1,15 +1,17 @@
-import { NavLink } from 'react-router-dom';
+
+import { NavLinkStyled} from "../UserMenu/UserMenu.styled"
+
 
 export const UserNavigation = () => {
 
     return (
         <>
-        <NavLink to="/register">
+        <NavLinkStyled to="/register">
         Register
-        </NavLink>
-        <NavLink  to="/login">
+        </NavLinkStyled>
+        <NavLinkStyled  to="/login">
         Log In
-        </NavLink>
+        </NavLinkStyled>
         </>
     )
 }

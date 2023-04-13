@@ -8,9 +8,11 @@ export const UserMenuWrap = styled.div`
     align-items: center
 ` 
 export const Name = styled.p`
+font-size: 18px;
+
  margin: 5px 0;
 ` 
-export const Tittle = styled.h1`
+export const Tittle = styled.h2`
 color: white;
 ` 
 export const NameAndBtnWrap = styled.div`
@@ -23,4 +25,10 @@ text-align: center;
 ` 
 export const NavLinkStyled = styled(NavLink)`
 text-decoration:none;
+color: white; 
+font-size: 22px;
+margin-bottom: 5px; 
+&:hover {
+    color: grey;
+  }
 `

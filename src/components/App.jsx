@@ -10,6 +10,10 @@ import { useEffect } from "react"
 import { refreshUser } from "reduce/auth/authOperations"
 import { selectIsRefreshing } from "reduce/auth/authSelectors"
 
+import { PrivateRoute } from './PrivateeRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+
+
 export function App() {
     const dispatch = useDispatch()
     const isRefreshing = useSelector(selectIsRefreshing)
@@ -20,13 +24,13 @@ export function App() {
 
 return !isRefreshing && (
   
-      <Routes>
-            <Route path="/" element={<SharedLayout/> }>
-                <Route index element={<Contacts />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-            </ Route>
-        </Routes>
+    <Routes>
+        <Route path="/" element={<SharedLayout />}>
+            <Route  path="/contacts" element={ <PrivateRoute redirectTo="/login" component={<Contacts />} />} />
+            <Route path="/register" element={<RestrictedRoute redirectTo="/contacts" component={<Register />} />}/>
+            <Route path="/login" element={ <RestrictedRoute redirectTo="/contacts" component={<Login />} />}/>
+        </ Route>
+    </Routes>
     ) 
 
 }
