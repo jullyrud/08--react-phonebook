@@ -2,9 +2,13 @@
 import { AddForm, Input, Label, Button } from '../components/form/Form.styled'
 import { Wrap } from '../components/App.styled'
 import { register } from 'reduce/auth/authOperations'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { selectError } from 'reduce/auth/authSelectors'
+import { Error } from '../components/Error/Error'
+
 
 export const Register = () => {
+  const isError = useSelector(selectError)
   const dispatch = useDispatch()
   
    const onHandkeSubmit = (evt) => {
@@ -14,8 +18,7 @@ export const Register = () => {
     const password = evt.target.password.value
 
      dispatch(register({name, email, password}))
-     
-    evt.target.reset()
+
   }
 
     return (
@@ -52,7 +55,8 @@ export const Register = () => {
           id="password"
         />
         <Button  type="submit">Register</Button>
-      </AddForm>
+        </AddForm>
+         {isError && <Error text="registration error" />}
         </Wrap>
        
        

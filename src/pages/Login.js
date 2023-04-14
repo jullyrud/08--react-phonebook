@@ -1,11 +1,14 @@
 
 import { AddForm, Input, Label, Button } from '../components/form/Form.styled'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { login } from 'reduce/auth/authOperations'
 import { Wrap } from '../components/App.styled'
+import { Error } from '../components/Error/Error'
+import { selectError } from 'reduce/auth/authSelectors'
 
 
 export const Login = () => {
+  const isError = useSelector(selectError)
   const dispatch = useDispatch()
 
   const onHandkeSubmit = (evt) => {
@@ -16,7 +19,7 @@ export const Login = () => {
 
     dispatch(login({ email, password }))
 
-    evt.target.reset()
+    
   }
 
     return (
@@ -36,7 +39,7 @@ export const Login = () => {
           
         <Label htmlFor="password">Password</Label>
         <Input
-          type="text"
+          type="password"
           name="password"
           pattern="^(?=.*\d)(?=.*[a-zA-Zа-яА-Я])[a-zA-Zа-яА-Я\d]{6,}$"
           title="Phone password must consist of at least 6 characters, one of which must be a number and the rest must be Latin or Cyrillic"
@@ -44,7 +47,8 @@ export const Login = () => {
           id="password"
         />
         <Button  type="submit">Login</Button>
-      </AddForm>
+        </AddForm>
+        {isError && <Error text="login error" />}
         </Wrap>
        
        
