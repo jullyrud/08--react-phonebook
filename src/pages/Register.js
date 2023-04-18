@@ -1,13 +1,16 @@
 
-import { AddForm, Input, Label, Button } from '../components/form/Form.styled'
+import { AddForm, Input, Label, Button, PasswordInputWrap, IsvisibleBtn } from '../components/form/Form.styled'
 import { Wrap } from '../components/App.styled'
 import { register } from 'reduce/auth/authOperations'
 import { useDispatch, useSelector } from "react-redux"
 import { selectError } from 'reduce/auth/authSelectors'
 import { Error } from '../components/Error/Error'
+import { AiFillEye } from "react-icons/ai";
+import { useState } from 'react'
 
 
 export const Register = () => {
+  const [passType, setPassType] = useState('password')
   const isError = useSelector(selectError)
   const dispatch = useDispatch()
   
@@ -19,6 +22,17 @@ export const Register = () => {
 
      dispatch(register({name, email, password}))
 
+   }
+  
+  const onVisibleBtnClick = () => {
+    
+        if(passType==="password")
+      {
+       setPassType("text")
+       return;
+      }
+      setPassType("password")
+
   }
 
     return (
@@ -29,9 +43,7 @@ export const Register = () => {
         <Input
           type="text"
           name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(?:[' -][a-zA-Zа-яА-Я]+)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
+         required
           id="name"
             />
             
@@ -46,15 +58,18 @@ export const Register = () => {
         />
           
         <Label htmlFor="password">Password</Label>
-        <Input
-          type="password"
+          <PasswordInputWrap>
+          <Input
+          type={passType}
           name="password"
           pattern="^(?=.*\d)(?=.*[a-zA-Zа-яА-Я])[a-zA-Zа-яА-Я\d]{6,}$"
           title="Phone password must consist of at least 6 characters, one of which must be a number and the rest must be Latin or Cyrillic"
           required
           id="password"
         />
-        <Button  type="submit">Register</Button>
+          <IsvisibleBtn type='button' onClick={onVisibleBtnClick}><AiFillEye /></IsvisibleBtn>
+          </PasswordInputWrap>
+            <Button type="submit" >Register</Button>
         </AddForm>
          {isError && <Error text="registration error" />}
         </Wrap>
